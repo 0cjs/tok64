@@ -1,8 +1,6 @@
 Multi-platform TOK64
 ====================
 
-> __NOTE:__ Currently this code does not compile.
-
 This is modification of the original [tok64 source code][tok64] to
 "genericise" it enough to compile on Linux, and hopefully other
 platforms. (The original had things like backslashes in paths given to

@@ -92,7 +92,7 @@ typedef struct basrec_struct
 {
    Addy_type next_rec;
    Addy_type line_num;
-   char tokenline [MAXTOKENLINE];
+   unsigned char tokenline [MAXTOKENLINE];
 } Basrec_type;
 
 
@@ -387,7 +387,7 @@ void set_addy (Basrec_type *node)
       return;
    }
 
-   next_addy += 5 + strlen (node -> tokenline);
+   next_addy += 5 + strlen ((const char *) node -> tokenline);
    node -> next_rec.whole_addy = next_addy;
 }
 
@@ -454,7 +454,7 @@ void exit_illeg_subs (unsigned int line_num, int col)
 
 
 int tok_quantity (unsigned char byte, char *text, int *tex, int offset,
-char *tokens, int *tok)
+unsigned char *tokens, int *tok)
 {
    int quantity, q, next;
 
