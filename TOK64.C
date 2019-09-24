@@ -1316,9 +1316,6 @@ int main (int argc, char *argv [])
    {
       for (i = 1; i < argc; i++)
       {
-         for (k = 0; k < strlen (argv [i]); k++)
-            argv [i][k] = tolower (argv [i][k]);
-
 	 if (argv [i][0] == '/' || argv [i][0] == '-')
 	 {
 	    if (! strcmp (argv [i], cmds [TOTXT].command))
