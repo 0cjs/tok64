@@ -15,6 +15,7 @@
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 
@@ -97,15 +98,15 @@ typedef struct basrec_struct
 
 typedef struct keyword_struct
 {
-   char *keyword;
-   unsigned char token;
+   const char *keyword;
+   const unsigned char token;
 } Keyword_type;
 
 
 typedef struct command_struct
 {
-   char *command;
-   char *desc;
+   const char *command;
+   const char *desc;
 } Command_type;
 
 
@@ -914,7 +915,7 @@ int detoken (Basrec_type *rec, char *text, int max, int lowercase)
    unsigned char *tokens;
 
    tokens = rec -> tokenline;
-   eot = strlen (tokens);
+   eot = strlen ((const char *) tokens);
 
    while (tok < eot && tex < max - 1)
    {
@@ -1112,7 +1113,8 @@ void list_cmds ()
 }
 
 
-void disp_list (char *title, Keyword_type *list, char *format, int limit)
+void disp_list (const char *title, Keyword_type *list,
+    const char *format, int limit)
 {
    int i = 0, lines = 0;
 
@@ -1139,7 +1141,7 @@ void disp_list (char *title, Keyword_type *list, char *format, int limit)
 
 void list_keywords ()
 {
-   char *desc = "These are the valid Commodore Basic keywords for";
+   const char *desc = "These are the valid Commodore Basic keywords for";
 
    disp_list (desc, keywords, "%-15s", 4);
 }
@@ -1147,7 +1149,7 @@ void list_keywords ()
 
 void list_special ()
 {
-   char *desc = "These are the valid special substitions for";
+   const char *desc = "These are the valid special substitions for";
 
    disp_list (desc, special, "%-20s", 3);
 }
@@ -1297,7 +1299,7 @@ void help ()
 }
 
 
-void main (int argc, char *argv [])
+int main (int argc, char *argv [])
 {
    FILE *in, *out;
    int toprg = TRUE, mult = FALSE, lower = TRUE, stomp = FALSE;
