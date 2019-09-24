@@ -445,7 +445,7 @@ int get_times (char *string, int start, int max, int *stop)
 }
 
 
-void exit_illeg_subs (line_num, col)
+void exit_illeg_subs (unsigned int line_num, int col)
 {
    fprintf (stderr, "\n%s: Illegal quoted substitution line %u col %d.\n",
       program, line_num, col + 1);
