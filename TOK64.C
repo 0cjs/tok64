@@ -20,10 +20,10 @@
 
 #define MAXLINE 402
 
-#include "\c\lib\getprog.h"
-#include "\c\lib\getline.h"
-#include "\c\lib\basename.h"
-#include "\c\lib\rtc.h"
+#include "GETPROG.H"
+#include "GETLINE.H"
+#include "BASENAME.H"
+#include "RTC.H"
 
 #define PROGNAME "TOK64"
 #define VERSION "1.4"
