@@ -6,6 +6,12 @@ This is modification of the original [tok64 source code][tok64] to
 platforms. (The original had things like backslashes in paths given to
 `#include`.) A `Makefile` is now provided, and it's tested on Debian 9.
 
+`GETLINE.C` has also been modified to drop `\r\n` at the end of an
+input line, as well as just `\n`. This allows you to use the converter
+on POSIX systems to convert `.txt` files using DOS newline format.
+(Previously the `\n` would be include in the `.prg` output and
+generate a syntax error in BASIC, at least on the C64.)
+
 The original (ASCII) [README] file has been left untouched; a shorter
 usage summary with additional information about using this on non-DOS
 platforms is below.
@@ -26,10 +32,6 @@ removed and replaced with `.prg` or `.txt`. The input filename may
 have any extension, but if the filename does not contain a `.`, `.prg`
 or .`txt` will be appended. Options start with slashes; e.g. `/list`
 will list all command line options.
-
-> WARNING: Text input files on unix that use DOS newline format will
-> have a CR appended to every line of the output which will cause
-> syntax errors.
 
 If an existing file would be overwritten, a confirmation will be
 required unless the `/stomp` option is given. The usual commands are:

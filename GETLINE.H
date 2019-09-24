@@ -12,8 +12,20 @@ int getline (char *line, int max, FILE *infile)
    else
    {
       i = strlen (line) - 1;
-      if (line [i] == '\n') line [i] = '\0';
-      else i ++;
+      if (line [i] != '\n') {
+         /*  If the line is longer than MAXLINE (including line ending
+             chars) we simply use what we have and read the remainder
+             as a subsequent line. */
+         i ++;
+      } else {
+         line [i] = '\0';           /* Remove trailing newline. */
+         if (line [i-1] == '\r') {
+            /* Remove CR before newline, for DOS file compatibility
+               on POSIX systems. */
+            i --;
+            line[i] = 0;
+         }
+      }
    }
 
    return i;
